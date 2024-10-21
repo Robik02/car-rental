@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {AsyncPipe, JsonPipe} from '@angular/common';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AsyncPipe, JsonPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'frontend';
+  httpClient = inject(HttpClient);
+  cars: Observable<any>;
+  bookings: Observable<any>;
+
+  constructor() {
+    this.cars = this.httpClient.get('http://localhost:8000/api/cars');
+    this.bookings = this.httpClient.get('http://localhost:8000/api/bookings');
+  }
 }
