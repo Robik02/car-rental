@@ -17,7 +17,7 @@ export class AppComponent {
   bookings: Observable<any>;
 
   constructor() {
-    this.cars = this.httpClient.get('http://localhost:8000/api/cars');
-    this.bookings = this.httpClient.get('http://localhost:8000/api/bookings');
+    this.cars = this.httpClient.get('/api/cars');
+    this.bookings = this.httpClient.get('/api/bookings');
   }
 }
