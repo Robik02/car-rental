@@ -14,4 +14,12 @@
   }
 </ul>
 
+<ul>
+  @for (user of (users | async); track user.id) {
+    <li>
+      {{ user | json }}
+    </li>
+  }
+</ul>
+
 <router-outlet/>

@@ -15,9 +15,11 @@ export class AppComponent {
   httpClient = inject(HttpClient);
   cars: Observable<any>;
   bookings: Observable<any>;
+  users: Observable<any>;
 
   constructor() {
     this.cars = this.httpClient.get('/api/cars');
     this.bookings = this.httpClient.get('/api/bookings');
+    this.users = this.httpClient.get('/api/users');
   }
 }
